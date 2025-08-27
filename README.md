@@ -3,7 +3,7 @@
 A minimal web app that generates PowerPoint slides from long-form text or markdown.  
 Paste text, give optional guidance (e.g. "investor pitch deck"), upload a PPTX template, and instantly download a new presentation styled like the template.
 
-🔗 **Demo Link (Vercel):** [Vercel link]()
+🔗 **Demo Link (Vercel):** [Vercel link](https://ppt-genai.vercel.app)
 
 ---
 
