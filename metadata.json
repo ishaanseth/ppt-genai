@@ -1,0 +1,5 @@
+{
+  "name": "Your Text, Your Style – Auto-Generate a Presentation",
+  "description": "A web app that lets anyone turn bulk text, markdown, or prose into a fully formatted PowerPoint presentation using AI. Users provide text, optional guidance, a Gemini API key, and a .pptx template to generate a new presentation for download.",
+  "requestFramePermissions": []
+}
