@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { UploadIcon, WandIcon } from './icons';
+const PROVIDERS = ["Gemini", "OpenAI", "Anthropic"];
 
 interface InputFormProps {
   text: string;
@@ -10,6 +11,8 @@ interface InputFormProps {
   apiKey: string;
   setApiKey: (key: string) => void;
   setTemplateFile: (file: File | null) => void;
+  provider: string;
+  setProvider: (provider: string) => void;
   onGenerate: () => void;
   isLoading: boolean;
 }
@@ -29,6 +32,8 @@ const InputForm: React.FC<InputFormProps> = ({
   apiKey,
   setApiKey,
   setTemplateFile,
+  provider,
+  setProvider,
   onGenerate,
   isLoading,
 }) => {
@@ -91,16 +96,30 @@ const InputForm: React.FC<InputFormProps> = ({
       <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200">2. Configure Output</h2>
 
       <div>
-        <label htmlFor="api-key" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
-          Gemini API Key
+        <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+          Choose LLM Provider
+        </label>
+        <select
+          value={provider}
+          onChange={(e) => setProvider(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-slate-700 dark:border-slate-600 dark:text-gray-50"
+        >
+          {PROVIDERS.map((p) => (
+            <option key={p} value={p}>{p}</option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">
+          {provider} API Key
         </label>
         <input
-          id="api-key"
           type="password"
           value={apiKey}
           onChange={(e) => setApiKey(e.target.value)}
-          placeholder="Enter your Google Gemini API Key"
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition dark:bg-slate-700 dark:border-slate-600 dark:placeholder-gray-400 dark:text-gray-50"
+          placeholder={`Enter your ${provider} API key`}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-slate-700 dark:border-slate-600 dark:text-gray-50"
         />
       </div>
 
